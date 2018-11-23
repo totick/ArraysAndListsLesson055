@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ArraysAndListsLesson055
 {
@@ -57,7 +58,25 @@ namespace ArraysAndListsLesson055
 
         private static void DoExercise_3()
         {
+            Console.WriteLine("Enter five unique integers:");
+            List<int> l = new List<int>();
+            do
+            {
+                Console.Write("Number {0}: ", l.Count + 1);
+                int value = int.Parse(Console.ReadLine());
+                if(l.Exists(v => v == value))
+                {
+                    Console.WriteLine("Value already exists!");
+                }
+                else
+                {
+                    l.Add(value);
+                }
+            } while (l.Count < 5);
 
+            l.Sort();
+
+            Console.WriteLine(string.Join(", ", l));
         }
 
         public static void Main(string[] args)
@@ -66,7 +85,7 @@ namespace ArraysAndListsLesson055
             while(!quit)
             {
                 Console.WriteLine("Choose exercise");
-                Console.WriteLine("1.Facebook likes\n2.Reversed name");
+                Console.WriteLine("1.Facebook likes\n2.Reversed name\n3.Sort five numbers");
 
                 int exerciseNr = int.Parse(Console.ReadLine());
 
