@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ArraysAndListsLesson055
 {
@@ -79,13 +80,41 @@ namespace ArraysAndListsLesson055
             Console.WriteLine(string.Join(", ", l));
         }
 
+        private static void DoExercise_4()
+        {
+
+            Console.WriteLine("Write a number or write 'Quit' to exit: ");
+            var numbers = new List<int>();
+            while(true)
+            {
+                string answer = Console.ReadLine().ToLower();
+                if(answer.Equals("quit"))
+                {
+                    break;
+                }
+                else
+                {
+                    int number = int.Parse(answer);
+                    numbers.Add(number);
+                }
+            }
+
+            Console.WriteLine("Unique numbers entered by user:");
+            var uniqueNumbers = numbers.Distinct<int>();
+            foreach(var nr in uniqueNumbers)
+            {
+                Console.WriteLine(nr);
+            }
+
+        }
+
         public static void Main(string[] args)
         {
             bool quit = false;
             while(!quit)
             {
                 Console.WriteLine("Choose exercise");
-                Console.WriteLine("1.Facebook likes\n2.Reversed name\n3.Sort five numbers");
+                Console.WriteLine("1.Facebook likes\n2.Reversed name\n3.Sort five numbers\n4.Unique numbers");
 
                 int exerciseNr = int.Parse(Console.ReadLine());
 
@@ -99,6 +128,9 @@ namespace ArraysAndListsLesson055
                         break;
                     case 3:
                         DoExercise_3();
+                        break;
+                    case 4:
+                        DoExercise_4();
                         break;
                     default:
                         Console.WriteLine("No such exercise!");
