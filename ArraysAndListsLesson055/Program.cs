@@ -40,13 +40,33 @@ namespace ArraysAndListsLesson055
             }
         }
 
+        private static void DoExercise_2()
+        {
+            Console.Write("Enter your name: ");
+            string name = Console.ReadLine();
+            char[] characters = name.ToCharArray();
+            Array.Reverse(characters);
+
+            var reverseName = string.Empty;
+            foreach(var ch in characters)
+            {
+                reverseName += ch;
+            }
+            Console.WriteLine("Your name in reverse is: {0}", reverseName);
+        }
+
+        private static void DoExercise_3()
+        {
+
+        }
+
         public static void Main(string[] args)
         {
             bool quit = false;
             while(!quit)
             {
                 Console.WriteLine("Choose exercise");
-                Console.WriteLine("1.Facebook likes");
+                Console.WriteLine("1.Facebook likes\n2.Reversed name");
 
                 int exerciseNr = int.Parse(Console.ReadLine());
 
@@ -54,6 +74,12 @@ namespace ArraysAndListsLesson055
                 {
                     case 1:
                         DoExercise_1();
+                        break;
+                    case 2:
+                        DoExercise_2();
+                        break;
+                    case 3:
+                        DoExercise_3();
                         break;
                     default:
                         Console.WriteLine("No such exercise!");
@@ -64,5 +90,6 @@ namespace ArraysAndListsLesson055
                 quit = Console.ReadLine().ToLower() == "y";
             }
         }
+
     }
 }
