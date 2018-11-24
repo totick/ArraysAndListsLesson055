@@ -108,13 +108,38 @@ namespace ArraysAndListsLesson055
 
         }
 
+        private static void DoExercise_5()
+        {
+            Console.WriteLine("Write a list of at least five numbers separated with coma sign e.g 1,2,3,4,5,6:");
+
+            string[] values;
+            while(true)
+            {
+                string answer = Console.ReadLine();
+                values = answer.Split(',');
+                if (values.Length >= 5)
+                {
+                    break;
+                }
+                Console.WriteLine("Invalid list, try again:");
+            }
+
+            int[] numbers = Array.ConvertAll<string, int>(values, int.Parse);
+
+            Array.Sort(numbers);
+            foreach(var number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+        }
+
         public static void Main(string[] args)
         {
             bool quit = false;
             while(!quit)
             {
                 Console.WriteLine("Choose exercise");
-                Console.WriteLine("1.Facebook likes\n2.Reversed name\n3.Sort five numbers\n4.Unique numbers");
+                Console.WriteLine("1.Facebook likes\n2.Reversed name\n3.Sort five numbers\n4.Unique numbers\n5.Three smallest numbers");
 
                 int exerciseNr = int.Parse(Console.ReadLine());
 
@@ -131,6 +156,9 @@ namespace ArraysAndListsLesson055
                         break;
                     case 4:
                         DoExercise_4();
+                        break;
+                    case 5:
+                        DoExercise_5();
                         break;
                     default:
                         Console.WriteLine("No such exercise!");
